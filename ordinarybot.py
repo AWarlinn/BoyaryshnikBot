@@ -12,8 +12,6 @@ import rusyllab
 
 bot = telebot.TeleBot(config.token)
 
-restricted_messages = ["я не пидор, а натурал", "я веган", "я натурал", "забань меня", "я не гей", "я не пью"]
-
 regex_msg = ("^.*((я не пид.р.*(а|я) натурал)|(я веган)|(я натурал)|(забань меня)|(я не гей)|(я не пью)).*$")
 
 def huevo(sent):
@@ -182,10 +180,7 @@ try:
             bot.reply_to(message, "И ПЕРЕД НАМИ ПОБЕДИТЕЛЬ! Ты выиграл ПЕРМАЧ!")
         else:
             bot.reply_to(message, "Тебе чертовски повезло! Ты выиграл бан на 666 сек")
-    
-    @bot.message_handler(commands=['restricted'])
-    def send_text(message):
-        bot.send_message(message.chat.id, "; ".join([str(x) for x in restricted_messages]))
+
     
     @bot.message_handler(regexp="^.*ты(?:(?!не).)*?пид(.?)р.*$")
     def handle_message(message):
